@@ -238,6 +238,18 @@ export class DocumentTreeProvider implements vscode.TreeDataProvider<MapItem> {
         treeView.reveal(this.getItemOf(lineNumber), { select: true, focus: false, expand: true })
     }
 
+    public getAllItems(): MapItem[] {
+        let allItems: MapItem[] = [];
+        if (this.Items) {
+            for (let index = 0; index < this.Items.length; index++) {
+                let item = this.Items[index];
+                allItems.push(item);
+                item.aggregateNestedChildren(allItems);
+            }
+        }
+        return allItems;
+    }
+
     public getItemOf(lineNumber: number): MapItem {
 
         let allItems: MapItem[] = [];

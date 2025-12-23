@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.29.0 (23 Dec, 2025)
+
+- #112: Added command/button for expanding all tree nodes.
+ 
 ## 1.28.0 (5 Dec, 2025)
 
 - Added support for YAML syntax (*.yaml and *.yml files). Courtesy of Benoit Brummer.
@@ -14,7 +18,7 @@
 
 ## 1.26.7 (12 October 2025)
 
--#108: Add "name" parameter to generic mappers so it shows in the "Codemap Settings" Tree View
+- #108: Add "name" parameter to generic mappers so it shows in the "Codemap Settings" Tree View
 
 ## 1.26.6 (8 November 2024)
 

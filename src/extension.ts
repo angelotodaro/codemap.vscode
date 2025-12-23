@@ -242,6 +242,15 @@ function reveal_current_line_in_tree(treeView1: vscode.TreeView<MapItem>, treeVi
     }
 }
 
+function expand_all(treeView1: vscode.TreeView<MapItem>) {
+    if (treeViewProvider1) {
+        let allItems = treeViewProvider1.getAllItems();
+        allItems.forEach(item => {
+            treeView1.reveal(item, { expand: true, select: false, focus: false });
+        });
+    }
+}
+
 function sort(direction: SortDirection) {
     MapItem.sortDirection = direction;
     settingsTreeViewProvider.refresh();  // triggers both codemap trees refresh
@@ -585,6 +594,7 @@ export function activate(context: vscode.ExtensionContext) {
 
     vscode.commands.registerCommand("codemap.reveal", () => reveal_current_line_in_tree(treeView1, treeView2));
     vscode.commands.registerCommand("codemap.quick_pick", quick_pick);
+    vscode.commands.registerCommand("codemap.expand_all", () => expand_all(treeView1));
     // settings tree forces refresh on codemap tree:
     vscode.commands.registerCommand("codemap.refresh", () => settingsTreeViewProvider.refresh());
 
