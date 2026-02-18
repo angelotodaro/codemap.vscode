@@ -1,9 +1,18 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 import * as fs from 'fs';
+import * as vscode from 'vscode';
 
-const use_standard_indent = false; // False = don't indent declarations inside of functions/subs. True = indent the declarations inside functions/subs.
-const standard_indent = 2; // Set based on indenting standards used in files. Only used if use_standard_indent is true
+const utils_1 = require("./utils");
+const defaults = new utils_1.config_defaults();
+
+// Get information from settings
+const use_standard_indent = vscode.workspace.getConfiguration("codemap").get('vbUseStandardIndent', defaults.get('vbUseStandardIndent'));
+const standard_indent = vscode.workspace.getConfiguration("codemap").get('vbStandardIndentLevel', defaults.get('vbStandardIndentLevel'));
+const show_parameters = vscode.workspace.getConfiguration("codemap").get('vbShowParameters', defaults.get('vbShowParameters'));
+const show_function_type = vscode.workspace.getConfiguration("codemap").get('vbShowFunctionType', defaults.get('vbShowFunctionType'));
+const show_var_type = vscode.workspace.getConfiguration("codemap").get('vbShowVarType', defaults.get('vbShowVarType'));
+
 
 // Used when combining parameters defined across multiple lines
 interface multi_line {
@@ -58,14 +67,15 @@ class mapper {
     let first_line = text.split(/\r?\n/, 1)[0]
     let indent_level = first_line.length - first_line.trimStart().length;
 
-    let cleaned = text
-      .replace(/\r?\n\s*/g, " ") // ALWAYS: collapse embedded new lines
-      .replace(/'[^\n]*$/gm, "") // ALWAYS: strip VB end-of-line comments
-      .replace(/(\b(?:Const|Dim)\b[^=]*?)=\s*.*$/gm, "$1") // ALWAYS: never show initializer values on Const/Dim
-      .replace(/\([^)]*\)/g, "()") // TOGGLE: hide parameters inside (...) ; comment out to SHOW
-      .replace(/\)\s+[Aa]s\b[^\n]*$/gm, ")") // TOGGLE: hide function RETURN type only (") As ..."); comment out to SHOW
-      .replace(/(\b(?:Dim|Const)\b[^\n]*?)\s+[Aa]s\b[^\n]*$/gm, "$1") // TOGGLE: hide variable/const trailing " As Type"; comment out to SHOW
-      .trimStart(); // ALWAYS: trim leading spaces      
+    text
+      .replace(/\r?\n\s*/g, " ") // Collapse embedded new lines
+      .replace(/'[^\n]*$/gm, "") // Strip VB end-of-line comments
+      .replace(/(\b(?:Const|Dim)\b[^=]*?)=\s*.*$/gm, "$1"); // Never show initializer values on Const/Dim
+    if(show_parameters) text.replace(/\([^)]*\)/g, "()") // Toggle showing parameters inside of ()
+    if(show_function_type) text.replace(/\)\s+[Aa]s\b[^\n]*$/gm, ")") // Toggle showing function return types
+    if(show_var_type) text.replace(/(\b(?:Dim|Const)\b[^\n]*?)\s+[Aa]s\b[^\n]*$/gm, "$1") // Toggle showing variable return types
+    
+    let cleaned = text.trimStart();
 
     return " ".repeat(indent_level) + cleaned;
   }

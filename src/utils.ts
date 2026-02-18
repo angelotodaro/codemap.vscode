@@ -163,6 +163,8 @@ export class config_defaults {
         }
     ];
 
+    public vb = "config:codemap.vb";
+
     public get(name: string): any {
         if (name == 'md') return this.md;
         else if (name == 'yml') return this.yml;
@@ -172,6 +174,7 @@ export class config_defaults {
         else if (name == 'svg') return this.svg;
         else if (name == 'py') return this.py;
         else if (name == 'rs') return this.rs;
+        else if (name == 'vb') return this.vb;
         else if (name == 'sortingEnabled') return this.sortingEnabled;
         else if (name == 'defaultSortDirection') return this.defaultSortDirection;
         else if (name == 'json') return this.json;
