@@ -175,27 +175,27 @@
                     "default": "./mapper_java.js",
                     "description": "Dedicated mapper for VB.NET syntax."
                 },
-                "codemap.vbUseStandardIndent": {
+                "codemap.vb.UseStandardIndent": {
                     "type": "boolean",
                     "default": false,
                     "description": "Use a standard indent level for variables declared inside of functions/subs with no indent."
                 },
-                "codemap.vbStandardIndentLevel": {
+                "codemap.vb.StandardIndentLevel": {
                     "type": "number",
                     "default": 2,
                     "description": "Set default indentation level if used."
                 },
-                "codemap.vbShowParameters": {
+                "codemap.vb.ShowParameters": {
                     "type": "boolean",
                     "default": false,
                     "description": "Show parameters for functions/subs inline."
                 },
-                "codemap.vbShowFunctionType": {
+                "codemap.vb.ShowFunctionType": {
                     "type": "boolean",
                     "default": false,
                     "description": "Show function return type."
                 },
-                "codemap.vbShowVarType": {
+                "codemap.vb.ShowVarType": {
                     "type": "boolean",
                     "default": false,
                     "description": "Show variable return type."

@@ -1,3 +1,8 @@
+/**
+ * This file is a part of CodeMap distribution. 
+ * It will be overwritten after the extension next update. Thus you may want to make an editable copy of
+ * this file and add it as a custom dedicated mapper in the settings file.
+*/
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 import * as fs from 'fs';
@@ -7,11 +12,11 @@ const utils_1 = require("./utils");
 const defaults = new utils_1.config_defaults();
 
 // Get information from settings
-const use_standard_indent = vscode.workspace.getConfiguration("codemap").get('vbUseStandardIndent', defaults.get('vbUseStandardIndent'));
-const standard_indent = vscode.workspace.getConfiguration("codemap").get('vbStandardIndentLevel', defaults.get('vbStandardIndentLevel'));
-const show_parameters = vscode.workspace.getConfiguration("codemap").get('vbShowParameters', defaults.get('vbShowParameters'));
-const show_function_type = vscode.workspace.getConfiguration("codemap").get('vbShowFunctionType', defaults.get('vbShowFunctionType'));
-const show_var_type = vscode.workspace.getConfiguration("codemap").get('vbShowVarType', defaults.get('vbShowVarType'));
+const use_standard_indent = vscode.workspace.getConfiguration("codemap").get('vb.UseStandardIndent', defaults.get('vb.UseStandardIndent'));
+const standard_indent = vscode.workspace.getConfiguration("codemap").get('vb.StandardIndentLevel', defaults.get('vb.StandardIndentLevel'));
+const show_parameters = vscode.workspace.getConfiguration("codemap").get('vb.ShowParameters', defaults.get('vb.ShowParameters'));
+const show_function_type = vscode.workspace.getConfiguration("codemap").get('vb.ShowFunctionType', defaults.get('vb.ShowFunctionType'));
+const show_var_type = vscode.workspace.getConfiguration("codemap").get('vb.ShowVarType', defaults.get('vb.ShowVarType'));
 
 
 // Used when combining parameters defined across multiple lines
