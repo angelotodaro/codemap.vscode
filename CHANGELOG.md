@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.29.1 (22 Feb, 2026)
+
+- #114: Added dedicated mapper for VB.NET (courtesy of @angelotodaro)
+ 
 ## 1.29.0 (23 Dec, 2025)
 
 - #112: Added command/button for expanding all tree nodes.
