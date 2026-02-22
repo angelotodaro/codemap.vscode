@@ -171,24 +171,34 @@
                     "description": "Regex-based definition of the mapping rules for PowerShell syntax."
                 },
                 "codemap.vb": {
-                    "type": "array",
-                    "default": [
-                        {
-                            "pattern": "[Cc]lass .*",
-                            "clear": "",
-                            "suffix": "",
-                            "role": "class",
-                            "icon": "class"
-                        },
-                        {
-                            "pattern": "([Ff]unction|[Ss]ub) (.*?)[(|:{]",
-                            "clear": "[Ff]unction |[Ss]ub |\\(",
-                            "suffix": "()",
-                            "role": "function",
-                            "icon": "function"
-                        }
-                    ],
-                    "description": "Regex-based definition of the mapping rules for VB.NET syntax."
+                    "type": "string",
+                    "default": "./mapper_java.js",
+                    "description": "Dedicated mapper for VB.NET syntax."
+                },
+                "codemap.vb.UseStandardIndent": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Use a standard indent level for variables declared inside of functions/subs with no indent."
+                },
+                "codemap.vb.StandardIndentLevel": {
+                    "type": "number",
+                    "default": 2,
+                    "description": "Set default indentation level if used."
+                },
+                "codemap.vb.ShowParameters": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Show parameters for functions/subs inline."
+                },
+                "codemap.vb.ShowFunctionType": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Show function return type."
+                },
+                "codemap.vb.ShowVarType": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Show variable return type."
                 },
                 "codemap.ini": {
                     "type": "array",
