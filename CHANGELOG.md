@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.29.4 (22 Jul, 2026)
+
+- #119:Conflict with Prettier
+
 ## 1.29.3 (14 Mar, 2026)
 
 - #116: Sync to cursor position when view becomes visible

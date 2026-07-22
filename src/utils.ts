@@ -34,7 +34,7 @@ String.prototype.lines = function (limit?: number) {
 
 String.prototype.replaceAll = function (search, replacement) {
     var target = this;
-    return target.replace(new RegExp(search, 'g'), replacement);
+    return target.replace(new RegExp(search.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g'), replacement);
 };
 
 export class config_defaults {
